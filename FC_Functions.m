@@ -28,7 +28,7 @@ F[a_,u_,b_][c_][a_,b_]/;(u===unit&&MemberQ[fusionproduct[a,b],c]):=1;
 F[u_,a_,b_][c_][a_,c_]/;(u===unit&&MemberQ[fusionproduct[a,b],c]):=1;
 
 F[a_,b_,c_][d_][e_,f_]/;MemberQ[fusionproduct[a,b],e]&&MemberQ[fusionproduct[b,c],f]&&MemberQ[Intersection[fusionproduct[e,c],fusionproduct[a,f]],d]:=F[a,b,c][d][e,f]=
-X0[a,b,c][d][e,f]//.rep0//RootReduce//FullSimplify
+X0[a,b,c][d][e,f]//.rep0//RootReduce
 
 
 pentagons[a_,b_,c_,d_]:=pentagons[a,b,c,d]=Table[

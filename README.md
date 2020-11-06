@@ -1,1 +1,1 @@
-Data for all multiplicity free unitary spherical fusion categories of rank &le; 4.
+Data for all multiplicity free unitary spherical fusion categories of rank &le; 5.

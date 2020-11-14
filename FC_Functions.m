@@ -28,7 +28,7 @@ F[a_,u_,b_][c_][a_,b_]/;(u===unit&&MemberQ[fusionproduct[a,b],c]):=1;
 F[u_,a_,b_][c_][a_,c_]/;(u===unit&&MemberQ[fusionproduct[a,b],c]):=1;
 
 F[a_,b_,c_][d_][e_,f_]/;MemberQ[fusionproduct[a,b],e]&&MemberQ[fusionproduct[b,c],f]&&MemberQ[Intersection[fusionproduct[e,c],fusionproduct[a,f]],d]:=F[a,b,c][d][e,f]=
-X0[a,b,c][d][e,f]//.rep0//RootReduce
+X0[a,b,c][d][e,f]//.rep0
 
 
 pentagons[a_,b_,c_,d_]:=pentagons[a,b,c,d]=Table[
@@ -90,17 +90,17 @@ B[c_][a_,b_]:=Conjugate[F[a,b,dual[b]][a][c,unit]]Sqrt[(dim[a]dim[b])/dim[c]]
 symmetry1:=symmetry1=
 Table[
 F[a,b,c][d][e,f]==1/Abs[\[Kappa][a]]^2 Sqrt[(dim[e]dim[f])/(dim[b]dim[d])]A[d][a,f]A[a,b][e]Conjugate[F[dual[a],e,c][f][b,d]],
-{a,obs},{b,obs},{c,obs},{e,fusionproduct[a,b]},{f,fusionproduct[b,c]},{d,Intersection[fusionproduct[a,f],fusionproduct[e,c]]}]//Flatten//RootReduce//DeleteCases[True]//DeleteDuplicates;
+{a,obs},{b,obs},{c,obs},{e,fusionproduct[a,b]},{f,fusionproduct[b,c]},{d,Intersection[fusionproduct[a,f],fusionproduct[e,c]]}]//Flatten(*//RootReduce*)//DeleteCases[True]//DeleteDuplicates;
 
 symmetry2:=symmetry2=
 Table[
 F[a,b,c][d][e,f]==1/Conjugate[\[Kappa][b]] Sqrt[(dim[e]dim[f])/(dim[a]dim[c])]A[f][b,c]B[a,b][e]Conjugate[F[e,dual[b],f][d][a,c]],
-{a,obs},{b,obs},{c,obs},{e,fusionproduct[a,b]},{f,fusionproduct[b,c]},{d,Intersection[fusionproduct[a,f],fusionproduct[e,c]]}]//Flatten//RootReduce//DeleteCases[True]//DeleteDuplicates;
+{a,obs},{b,obs},{c,obs},{e,fusionproduct[a,b]},{f,fusionproduct[b,c]},{d,Intersection[fusionproduct[a,f],fusionproduct[e,c]]}]//Flatten(*//RootReduce*)//DeleteCases[True]//DeleteDuplicates;
 
 symmetry3:=symmetry3=
 Table[
 F[a,b,c][d][e,f]==1/Abs[\[Kappa][c]]^2 Sqrt[(dim[e]dim[f])/(dim[b]dim[d])]B[f][b,c]B[e,c][d]Conjugate[F[a,f,dual[c]][e][d,b]],
-{a,obs},{b,obs},{c,obs},{e,fusionproduct[a,b]},{f,fusionproduct[b,c]},{d,Intersection[fusionproduct[a,f],fusionproduct[e,c]]}]//Flatten//RootReduce//DeleteCases[True]//DeleteDuplicates;
+{a,obs},{b,obs},{c,obs},{e,fusionproduct[a,b]},{f,fusionproduct[b,c]},{d,Intersection[fusionproduct[a,f],fusionproduct[e,c]]}]//Flatten(*//RootReduce*)//DeleteCases[True]//DeleteDuplicates;
 
 pivotalstar:=Table[
 F[a,b,c][d][e,f]==1/(Conjugate[\[Kappa][a]]\[Kappa][c]) A[d][a,f]A[dual[a],e][b]B[f][b,c]B[d,dual[c]][e]F[dual[a],d,dual[c]][b][f,e],{a,obs},{b,obs},{c,obs},{e,fusionproduct[a,b]},{f,fusionproduct[b,c]},{d,Intersection[fusionproduct[a,f],fusionproduct[e,c]]}]//Flatten//DeleteDuplicates//DeleteCases[True];
@@ -137,6 +137,11 @@ Conjugate[Re0[a_,b_,c_][d_][e_,f_]]:=Re0[a,b,c][d][e,f];
 Re[Re0[a_,b_,c_][d_][e_,f_]]:=Re0[a,b,c][d][e,f];
 Im[Re0[a_,b_,c_][d_][e_,f_]]:=0;
 Abs[Re0[a_,b_,c_][d_][e_,f_]]:=Sign[Re0[a,b,c][d][e,f]];
+
+Conjugate[P0[a_,b_,c_][d_][e_,f_]]:=P0[a,b,c][d][e,f];
+Re[P0[a_,b_,c_][d_][e_,f_]]:=P0[a,b,c][d][e,f];
+Im[P0[a_,b_,c_][d_][e_,f_]]:=0;
+Abs[P0[a_,b_,c_][d_][e_,f_]]:=P0[a,b,c][d][e,f];
 
 Conjugate[U[a_,b_][c_]]/;V[a,b][c]==1:=1/U[a,b][c]
 Protect[Abs,Conjugate,Power,Times,Sqrt];
